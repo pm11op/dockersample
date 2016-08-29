@@ -1,0 +1,13 @@
+version: '2'
+services:
+  redis:
+    image: redis:3.2
+    container_name: sample_redis_prod
+    restart: unless-stopped
+    volumes:
+      - /var/db/redis/prod:/data
+    command: redis-server --appendonly yes
+networks:
+  default:
+    external:
+      name: sample_prod

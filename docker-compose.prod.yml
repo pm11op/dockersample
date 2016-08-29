@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web_prod:
+    build:
+      context: .
+      dockerfile: Dockerfile_prod
+    volumes:
+     - .:/code
+    environment:
+      ENV_STAGE: prod
+    networks:
+     - sample_prod
+    restart: unless-stopped
+networks:
+  sample_prod:
+    external: true

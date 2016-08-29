@@ -1,0 +1,4 @@
+flask==0.11
+flask-session
+redis==2.10.5
+uwsgi==2.0.13

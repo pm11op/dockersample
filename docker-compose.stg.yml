@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web_stg:
+    build:
+      context: .
+      dockerfile: Dockerfile_stg
+    volumes:
+     - .:/code
+    environment:
+      ENV_STAGE: stg
+    networks:
+     - sample_stg
+    restart: unless-stopped
+networks:
+  sample_stg:
+    external: true

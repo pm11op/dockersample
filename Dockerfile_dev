@@ -1,0 +1,12 @@
+FROM python:2.7
+ADD . /code
+WORKDIR /code
+RUN useradd --shell /bin/false app && \
+    pip install -r requirements.txt
+
+ENV HOME=/code
+RUN chown -R app:app $HOME
+USER app
+#CMD uwsgi -s /code/myapp.sock --http :5000 --python-path /code -w app:app --chmod-socket=666
+
+CMD python app.py
